@@ -5,11 +5,11 @@ I will start from Data Structures and move over to the algorithms
 First We will learn the basic operations for every Data Structure
 > Transverse Searching Inserting Deleting Updating
 ### Arrays
-Transversing. 
-Inserting.
-Updating.
-Deleting.
-Searching.
+Transversing<br/>
+Inserting<br/>
+Updating<br/>
+Deleting<br/>
+Searching<br/>
 ### Linked List
 ### Stack
 ### Queues
