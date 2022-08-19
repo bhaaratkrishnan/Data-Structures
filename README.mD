@@ -11,6 +11,7 @@ Updating<br/>
 Deleting<br/>
 Searching<br/>
 ### Linked List
+[Inserting a Node at beginning](/linked_list/)<br/>
 ### Stack
 ### Queues
 
