@@ -11,7 +11,7 @@ Updating<br/>
 Deleting<br/>
 Searching<br/>
 ### Linked List
-[Inserting a Node at beginning](/linked_list/inserting_in_beginning)<br/>
+[Inserting a Node at beginning](linked_list/inserting_in_beginning.c)<br/>
 ### Stack
 ### Queues
 
