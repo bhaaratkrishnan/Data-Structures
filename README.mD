@@ -5,7 +5,7 @@ I will start from Data Structures and move over to the algorithms
 First We will learn the basic operations for every Data Structure
 > Transverse Searching Inserting Deleting Updating
 ### Arrays
-Transversing<br/>
+[Transversing](/arrays/transverse.cpp)<br/>
 Inserting<br/>
 Updating<br/>
 Deleting<br/>
