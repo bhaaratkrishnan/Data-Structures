@@ -1,6 +1,5 @@
 #ifndef LINKED_LIST_H_INCLUDED
 #define LINKED_LIST_H_INCLUDED
-
 struct node{
     int data;
     struct node * link;
@@ -80,10 +79,13 @@ void delete_at_end(struct node ** head){
     }
     free(temp->link);
     temp->link = NULL;
-
 }
 void delete_at_nth(struct node ** head, int pos){
     struct node * temp = *head;
+    if(temp==NULL){
+        printf("Linked List is Empty\n");
+        return;
+    }
     if(pos==1){
         *head=temp->link;
         free(temp);
@@ -97,6 +99,39 @@ void delete_at_nth(struct node ** head, int pos){
     free(temp2);
     printf("Node Deleted\n");
 }
+int length(struct node * head){
+    struct node * temp = head;
+    int node_count = 0;
+    while(temp!=NULL){
+        node_count +=1;
+        temp = temp->link;
+    }
+    printf("No of nodes : %d\n",node_count);
+    return node_count;
+}
+struct node * search_data(struct node * head, int x){
+    struct node * temp = head;
+    int node_count = 1;
+    while(temp->link!=NULL && temp->data!=x){
+        temp = temp->link;
+        node_count++;
+    }
+    if(temp->data==x){
+        printf("Data Found in %d node\n",node_count);
+        return temp;
+    }
+    printf("Data doesn't exist\n");
+    temp = NULL;
+    return temp;
+}
+void is_last(struct node * temp){
+    if(temp->link==NULL){
+        printf("It is the end of the list");
+        return;
+    }
+    printf("It is not the end of the list");
+    return;
+}
 void print_linked_list(struct node * head){
     struct node * temp = head;
     while(temp!=NULL){
@@ -104,5 +139,10 @@ void print_linked_list(struct node * head){
         temp=temp->link;
     }
     printf("NULL\n");
+}
+struct node * create_linked_list(){
+    struct node * head = (struct node *)malloc(sizeof(struct node));
+    head = NULL;
+    return head;
 }
 #endif // LINKED_LIST_H_INCLUDED
