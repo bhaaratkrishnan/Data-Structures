@@ -13,10 +13,13 @@ void infixToPostfix(string str){
     for(int i=0; i<str.length(); i++){
         char c = str[i];
         if(iswalnum(c)){
+            //Checking if a the character is number or alphabet and appending into the result string
             result+=c;
         }else if(c=='('){
+            //If its a opening paranthesis it is pushed into the stack
             s.push(c);
         }else if(c==')'){
+            //If closing paranthesis, then till a opening paranthesis comes the top of the stack is added to result string and top is poped
             while(s.top()!='('){
                 result += s.top();
                 s.pop();
