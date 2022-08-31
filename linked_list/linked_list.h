@@ -145,4 +145,14 @@ struct node * create_linked_list(){
     head = NULL;
     return head;
 }
+void reverse_ll_recursion(struct node * temp, struct node ** head){
+    if(temp->link==NULL){
+        *head = temp;
+        return;
+    }
+    reverse_ll_recursion(temp->link, head);
+    struct node * temp2 = temp->link;
+    temp2->link =  temp;
+    temp->link = NULL;
+}
 #endif // LINKED_LIST_H_INCLUDED
