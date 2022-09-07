@@ -25,29 +25,33 @@ void print_stack(){
     for(int i=0; i<=top; i++){
         printf("%d ",arr[i]);
     }
-    printf("\n");
+    printf("->Top\n");
 }
 int main()
 {
     printf("Stack Operation : \n");
     int c,x;
-    while(1){
+    while(c!=5){
         printf("1. Push\n");
         printf("2. Pop\n");
         printf("3. Top\n");
         printf("4. Display\n");
         printf("5. Exit\n");
         printf("Enter Option : ");scanf("%d",&c);
-        if(c==1){
+        switch(c){
+            case 1:
             printf("Enter element : ");scanf("%d",&x);
-            Push(x);
-        }else if(c==2){
+            Push(x);break;
+            case 2:
             printf("Pop of the stack : %d\n",Pop());
-        }else if(c==3){
+            break;
+            case 3:
             printf("Top of the stack : %d\n",Top());
-        }else if(c==4){
+            break;
+            case 4:
             printf("Stack \n");print_stack();
-        }else{
+            break;
+            case 5:
             break;
         }
     }
