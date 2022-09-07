@@ -10,12 +10,13 @@ void Push(int x){
     }
     arr[++top]=x;
 }
-void Pop(){
+int Pop(){
     if(top==-1){
         printf("Error no element to pop\n");
         return;
     }
     top--;
+    return arr[top+1];
 }
 int Top(){
     return arr[top];
@@ -28,8 +29,27 @@ void print_stack(){
 }
 int main()
 {
-    Push(1);print_stack();
-    Push(2);print_stack();
-    printf("Top : ",Top());
+    printf("Stack Operation : \n");
+    int c,x;
+    while(1){
+        printf("1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Top\n");
+        printf("4. Display\n");
+        printf("5. Exit\n");
+        printf("Enter Option : ");scanf("%d",&c);
+        if(c==1){
+            printf("Enter element : ");scanf("%d",&x);
+            Push(x);
+        }else if(c==2){
+            printf("Pop of the stack : %d\n",Pop());
+        }else if(c==3){
+            printf("Top of the stack : %d\n",Top());
+        }else if(c==4){
+            printf("Stack \n");print_stack();
+        }else{
+            break;
+        }
+    }
     return 0;
 }
