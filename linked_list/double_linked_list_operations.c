@@ -18,6 +18,8 @@ void insert_at_head(int x){
     temp->data = x;
     temp->prev = NULL;
     temp->next = head;
+    if(head==NULL){head = temp; return;}
+    head->prev = temp;
     head = temp;
 }
 void insert_at_end(int x){
@@ -50,6 +52,28 @@ void insert(int x, struct node * pos){
     temp->prev = temp2;
     return;
 }
+void delete(int x){
+    struct node * temp = find(x);
+    if(temp==NULL) return;
+    if(temp->prev==NULL){
+        //head deleting
+        printf("head %d\n",temp->data);
+        head = temp->next;
+        head->prev = NULL;
+        free(temp);
+        return;
+    }
+    else if(temp->next==NULL){
+        printf("tail \n");
+        temp->prev->next = NULL;
+        free(temp);
+        return;
+    }
+    printf("mid \n");
+    temp->prev->next = temp->next;
+    temp->next->prev = temp->prev;
+    free(temp);
+}
 void display(){
     struct node * temp = head;
     while(temp!=NULL){
@@ -64,5 +88,6 @@ void main(){
     insert_at_end(3);display();
     insert_at_end(4);display();
     insert_at_end(5);display();
-    insert(3, find(2));display();
+    insert(15, find(3));display();
+    delete(1);display();
 }
