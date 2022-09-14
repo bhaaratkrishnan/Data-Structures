@@ -2,71 +2,67 @@
 #include <stdlib.h>
 struct node{
     int data;
-    struct node* next;
-    struct node* prev;
+    struct node * next;
+    struct node * prev;
 };
-struct node* head; //Global variable - pointer to head node.
-struct node* create_new_node(int x){//Creates a new node with given data and returns its pointer
-    struct node * new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->data=x;
-    new_node->next=NULL;
-    new_node->prev=NULL;
-    return new_node;//Pointer returned
+struct node * head = NULL;
+struct node * find(int x){
+    struct node * temp = head;
+    while(temp!=NULL && temp->data!=x){
+        temp = temp->next;
+    }
+    return temp;
 }
 void insert_at_head(int x){
-    struct node* temp = create_new_node(x);
-    if(head==NULL){//If the linked list is empty
-        head = temp;//Setting new node is head
-        return;
-    }
-    head->prev = temp;
+    struct node * temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = x;
+    temp->prev = NULL;
     temp->next = head;
     head = temp;
 }
-void insert_at_tail(int x){
-    struct node * temp = create_new_node(x);
-    if(head==NULL){//If linked list is empty
-        head = temp;
+void insert_at_end(int x){
+    if(head==NULL){
+        insert_at_head(x);
         return;
     }
-    struct node * tail = head;
-    while(tail->next!=NULL){
-        tail = tail->next;
+    struct node * temp = (struct node *)malloc(sizeof(struct node));
+    struct node * temp_end = head;
+    while(temp_end->next!=NULL){
+        temp_end = temp_end->next;
     }
-    tail->next=temp;
-    temp->prev= tail;
+    temp->data = x;
+    temp_end->next = temp;
+    temp->prev = temp_end;
+    temp->next = NULL;
+}
+void insert(int x, struct node * pos){
+    if(pos==NULL) return;
+    if(pos->prev==NULL){
+        insert_at_head(x);
+        return;
+    }
+    struct node * temp2 = pos->prev;
+    struct node * temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = x;
+    temp->next = temp2->next;
+    temp2->next->prev = temp;
+    temp2->next = temp;
+    temp->prev = temp2;
     return;
 }
-void print_ll(){
-    struct node* temp = head;
-    printf("forward printing : \n");
+void display(){
+    struct node * temp = head;
     while(temp!=NULL){
         printf("%d ",temp->data);
         temp = temp->next;
     }
     printf("\n");
 }
-void print_ll_reverse(){
-    //Optional
-    struct node* temp = head;
-    //Goes to the end of the linked list
-    while(temp->next!=NULL){
-            temp=temp->next;
-    }
-    printf("Backward printing : \n");
-    while(temp!=NULL){
-        printf("%d ",temp->data);
-        temp=temp->prev;
-    }
-    printf("\n");
-}
-int main()
-{
-    insert_at_head(1);print_ll();
-    insert_at_head(2);print_ll();
-    insert_at_head(3);print_ll();
-    insert_at_head(4);print_ll();
-    insert_at_tail(2);print_ll();
-    print_ll_reverse();
-    return 0;
+void main(){
+    insert_at_head(1);display();
+    insert_at_head(2);display();
+    insert_at_end(3);display();
+    insert_at_end(4);display();
+    insert_at_end(5);display();
+    insert(3, find(2));display();
 }
